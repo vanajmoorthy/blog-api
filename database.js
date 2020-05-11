@@ -13,17 +13,11 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
 			`CREATE TABLE posts (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             title text, 
-            description text, 
+			description text, 
+			author text
             )`,
 			(err) => {
 				if (err) {
-				} else {
-					// Table just created, creating some rows
-					var insert =
-						"INSERT INTO posts (title, description) VALUES (?,?)";
-					db.run(insert, ["333", "this is a post"]);
-					db.run(insert, ["post2", "ohter psot"]);
-					db.run(insert, ["pos222t2", "ohter psot"]);
 				}
 			}
 		);

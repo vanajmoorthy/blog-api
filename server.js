@@ -23,6 +23,7 @@ app.get("/posts", (req, res, next) => {
 			res.status(400).json({ error: err.message });
 			return;
 		}
+		console.log(rows);
 		res.json({
 			message: "success",
 			data: rows,
@@ -50,10 +51,11 @@ app.post("/posts", (req, res, next) => {
 	var data = {
 		title: req.body.title,
 		description: req.body.description,
+		auhor: req.body.author,
 	};
 
-	var sql = "INSERT INTO posts (title, description) VALUES (?,?)";
-	var params = [data.title, data.description];
+	var sql = "INSERT INTO posts (title, description, author) VALUES (?,?,?)";
+	var params = [data.title, data.description, data.author];
 
 	db.run(sql, params, function (err, result) {
 		if (err) {
