@@ -34,7 +34,7 @@ app.get("/", (req, res, next) => {
 	});
 });
 
-app.post("/", (req, res, next) => {
+app.post("/", cors(), (req, res, next) => {
 	let errors = [];
 
 	console.log(req.body);
