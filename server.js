@@ -10,7 +10,7 @@ const HTTP_PORT = process.env.PORT;
 
 // Start server
 app.listen(HTTP_PORT, () => {
-	console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
+	console.log(`Server running on port ${HTTP_PORT}`);
 });
 
 // Root endpoint
