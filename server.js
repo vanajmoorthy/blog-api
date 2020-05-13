@@ -1,9 +1,13 @@
 const express = require("express");
 const db = require("./database.js");
+var cors = require("cors");
 
 // Create express app
 const app = express();
+
+// Middleware
 app.use(express.json());
+app.use(cors());
 
 // Server port
 const HTTP_PORT = process.env.PORT;
@@ -14,7 +18,6 @@ app.listen(HTTP_PORT, () => {
 });
 
 // Root endpoint
-
 app.get("/", (req, res, next) => {
 	var sql = "select * from posts";
 	var params = [];
