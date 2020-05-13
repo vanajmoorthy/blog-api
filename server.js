@@ -1,21 +1,21 @@
 const express = require("express");
 const db = require("./database.js");
+
 // Create express app
 const app = express();
 app.use(express.json());
 
 // Server port
 const HTTP_PORT = 8000;
+
 // Start server
 app.listen(HTTP_PORT, () => {
 	console.log("Server running on port %PORT%".replace("%PORT%", HTTP_PORT));
 });
-// Root endpoint
-app.get("/", (req, res, next) => {
-	res.json({ message: "Ok" });
-});
 
-app.get("/posts", (req, res, next) => {
+// Root endpoint
+
+app.get("/", (req, res, next) => {
 	var sql = "select * from posts";
 	var params = [];
 	db.all(sql, params, (err, rows) => {
@@ -31,7 +31,7 @@ app.get("/posts", (req, res, next) => {
 	});
 });
 
-app.post("/posts", (req, res, next) => {
+app.post("/", (req, res, next) => {
 	let errors = [];
 
 	console.log(req.body);
@@ -51,7 +51,7 @@ app.post("/posts", (req, res, next) => {
 	var data = {
 		title: req.body.title,
 		description: req.body.description,
-		auhor: req.body.author,
+		author: req.body.author,
 	};
 
 	var sql = "INSERT INTO posts (title, description, author) VALUES (?,?,?)";
@@ -69,7 +69,6 @@ app.post("/posts", (req, res, next) => {
 		});
 	});
 });
-// Insert here other API endpoints
 
 // Default response for any other request
 app.use(function (req, res) {
