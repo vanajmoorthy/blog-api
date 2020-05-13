@@ -18,7 +18,7 @@ app.listen(HTTP_PORT, () => {
 });
 
 // Root endpoint
-app.get("/", (req, res, next) => {
+app.get("/", cors(), (req, res, next) => {
 	var sql = "select * from posts";
 	var params = [];
 	db.all(sql, params, (err, rows) => {
@@ -34,7 +34,7 @@ app.get("/", (req, res, next) => {
 	});
 });
 
-app.post("/", (req, res, next) => {
+app.post("/", cors(), (req, res, next) => {
 	let errors = [];
 
 	console.log(req.body);
@@ -43,7 +43,7 @@ app.post("/", (req, res, next) => {
 	}
 
 	if (!req.body.description) {
-		errors.push("Please specify a body");
+		errors.push(" Please specify a body");
 	}
 
 	if (errors.length) {
