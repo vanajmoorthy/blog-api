@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json());
 
 // Server port
-const HTTP_PORT = 8000;
+const HTTP_PORT = process.env.PORT;
 
 // Start server
 app.listen(HTTP_PORT, () => {
@@ -44,7 +44,7 @@ app.post("/", (req, res, next) => {
 	}
 
 	if (errors.length) {
-		res.status(400).json({ error: errors.join(",") });
+		res.status(400).json({ error: errors(",") });
 		return;
 	}
 
