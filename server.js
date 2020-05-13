@@ -47,7 +47,7 @@ app.post("/", (req, res, next) => {
 	}
 
 	if (errors.length) {
-		res.status(400).json({ error: errors(",") });
+		res.status(400).json({ error: errors.join(",") });
 		return;
 	}
 
