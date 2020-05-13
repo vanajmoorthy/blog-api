@@ -40,6 +40,7 @@ app.get("/", (req, res, next) => {
 			data: rows,
 		});
 	});
+	next();
 });
 
 app.post("/", (req, res, next) => {
