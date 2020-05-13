@@ -8,7 +8,7 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(cors());
-
+app.options("*", cors());
 // Server port
 const HTTP_PORT = process.env.PORT;
 
