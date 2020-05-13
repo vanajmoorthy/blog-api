@@ -6,6 +6,14 @@ var cors = require("cors");
 const app = express();
 
 // Middleware
+app.use(function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header(
+		"Access-Control-Allow-Headers",
+		"Origin, X-Requested-With, Content-Type, Accept"
+	);
+	next();
+});
 app.use(express.json());
 app.use(cors());
 app.options("*", cors());
@@ -18,7 +26,7 @@ app.listen(HTTP_PORT, () => {
 });
 
 // Root endpoint
-app.get("/", cors(), (req, res, next) => {
+app.get("/", (req, res, next) => {
 	var sql = "select * from posts";
 	var params = [];
 	db.all(sql, params, (err, rows) => {
@@ -34,7 +42,7 @@ app.get("/", cors(), (req, res, next) => {
 	});
 });
 
-app.post("/", cors(), (req, res, next) => {
+app.post("/", (req, res, next) => {
 	let errors = [];
 
 	console.log(req.body);
