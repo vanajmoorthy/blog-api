@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 // Server port
-const HTTP_PORT = process.env.PORT;
+const HTTP_PORT = 8000;
 
 // Start server
 app.listen(HTTP_PORT, () => {
